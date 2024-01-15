@@ -6,7 +6,7 @@
 /*   By: jcario <jcario@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:19:23 by jcario            #+#    #+#             */
-/*   Updated: 2024/01/03 17:44:02 by jcario           ###   ########.fr       */
+/*   Updated: 2024/01/03 19:44:02 by jcario           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,14 @@ int		ft_toupper(int ch);
  @return A pointer to the first occurence of the character in the string.
 */
 char	*ft_strchr(const char *str, int search);
+
+/**
+ @brief Compare two strings.
+ @param str1 A string.
+ @param str2 A string.
+ @return 0 if the string are identical, otherwise the differences between them.
+*/
+int		ft_strcmp(const char *str1, const char *str2);
 
 /**
  @brief Search for a specified character in a string.
