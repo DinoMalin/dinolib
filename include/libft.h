@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jcario <jcario@student.42lehavre.fr>       +#+  +:+       +#+        */
+/*   By: jcario <jcario@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:19:23 by jcario            #+#    #+#             */
-/*   Updated: 2023/12/09 19:39:26 by jcario           ###   ########.fr       */
+/*   Updated: 2024/01/03 17:44:02 by jcario           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # define TRUE 1
 # define FALSE 0
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
 typedef struct s_list
 {
 	void			*content;
@@ -29,35 +33,35 @@ typedef struct s_list
 /* ================================== IS =================================== */
 
 /**
- @brief Checl if the character given is a digit.
+ @brief Check if the character given is a digit.
  @param ch A character.
  @return 1 if the character is a digit, otherwise 0.
 */
 int		ft_isdigit(int ch);
 
 /**
- @brief Checl if the character given is a letter.
+ @brief Check if the character given is a letter.
  @param ch A character.
  @return 1 if the character is a letter, otherwise 0.
 */
 int		ft_isalpha(int ch);
 
 /**
- @brief Checl if the character given is alphanumeric.
+ @brief Check if the character given is alphanumeric.
  @param ch A character.
  @return 1 if the character is alphanumeric, otherwise 0.
 */
 int		ft_isalnum(int ch);
 
 /**
- @brief Checl if the character given is in the ASCII table.
+ @brief Check if the character given is in the ASCII table.
  @param ch A character.
  @return 1 if the character is ASCII, otherwise 0.
 */
 int		ft_isascii(int ch);
 
 /**
- @brief Checl if the character given is printable.
+ @brief Check if the character given is printable.
  @param ch A character.
  @return 1 if the character is printable, otherwise 0.
 */
@@ -176,7 +180,7 @@ int		ft_toupper(int ch);
  @param search A character.
  @return A pointer to the first occurence of the character in the string.
 */
-char	*ft_strchr(char *str, int search);
+char	*ft_strchr(const char *str, int search);
 
 /**
  @brief Search for a specified character in a string.
@@ -404,6 +408,8 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 */
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
+/* ================================= UTILS ================================= */
+
 /**
  @brief A reimplementation of printf, works with cspdixX%.
  @param str A string.
@@ -411,5 +417,20 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
  @return The number of character that the function has printed
 */
 int	ft_printf(const char *str, ...);
+
+/**
+ @brief A modification of strjoin to fit the exigences of get_next_line.
+ @param s1 A string.
+ @param s2 A string.
+ @return A string that join s1 and s2.
+*/
+char	*ft_strjoin_modified(char *s1, char *s2);
+
+/**
+ @brief Get the next line of a given file descriptor.
+ @param fd A file descriptor.
+ @return The next line of the given file descriptor.
+*/
+char	*get_next_line(int fd);
 
 #endif

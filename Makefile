@@ -1,17 +1,15 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Iinclude
+CFLAGS = -Wall -Wextra -Werror -Iinclude -g
 
-FILES =	ft_isdigit ft_isalnum ft_isalpha ft_isascii ft_isprint \
-		ft_memset ft_bzero ft_memcpy ft_memmove ft_memchr ft_memcmp ft_calloc \
-		ft_strlen ft_strlcpy ft_strlcat ft_toupper ft_tolower ft_strchr ft_strrchr ft_strncmp ft_strnstr ft_atoi \
-		ft_strdup ft_substr ft_strjoin ft_strtrim ft_split ft_itoa ft_strmapi ft_striteri \
-		ft_putchar_fd ft_putstr_fd ft_putendl_fd ft_putnbr_fd ft_puthexa_fd ft_putunbr_fd\
-		ft_lstnew ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone ft_lstiter ft_lstmap ft_lstsize ft_lstlast \
-		ft_printf
+FILES =	is/ft_isdigit is/ft_isalnum is/ft_isalpha is/ft_isascii is/ft_isprint \
+		mem/ft_memset mem/ft_bzero mem/ft_memcpy mem/ft_memmove mem/ft_memchr mem/ft_memcmp mem/ft_calloc \
+		str/ft_strlen str/ft_strlcpy str/ft_strlcat str/ft_toupper str/ft_tolower str/ft_strchr str/ft_strrchr str/ft_strncmp str/ft_strnstr str/ft_atoi \
+		str/ft_strdup str/ft_substr str/ft_strjoin str/ft_strtrim str/ft_split str/ft_itoa str/ft_strmapi str/ft_striteri \
+		put/ft_putchar_fd put/ft_putstr_fd put/ft_putendl_fd put/ft_putnbr_fd put/ft_puthexa_fd put/ft_putunbr_fd \
+		lst/ft_lstnew lst/ft_lstadd_back lst/ft_lstadd_front lst/ft_lstclear lst/ft_lstdelone lst/ft_lstiter lst/ft_lstmap lst/ft_lstsize lst/ft_lstlast \
+		printf/ft_printf get_next_line/get_next_line_utils get_next_line/get_next_line
 
 OBJ_DIR = obj/
-SUBDIRS = is lst mem put str
-
 SRCS = $(addprefix src/, $(addsuffix .c, $(FILES)))
 OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(FILES)))
 
@@ -19,13 +17,13 @@ NAME = libft.a
 
 .PHONY = all clean fclean re
 
-all: $(OBJ_DIR) $(OBJS)
-	@echo "\033[32m✔ Compilation des fichiers sources...\033[37m"
+all: $(OBJS)
+	@echo "\033[32m✔ Compilating sources files...\033[37m"
 	@ar -rcs $(NAME) $(OBJS)
-	@echo "\033[32m✔ Bibliothèque créee.\033[37m"
+	@echo "\033[32m✔ Library created.\033[37m"
 
 clean:
-	@echo "\033[31m✔ Suppression des fichiers sources...\033[37m"
+	@echo "\033[31m✔ Deleting sources files...\033[37m"
 	@rm -rf $(OBJ_DIR)
 
 fclean: clean
@@ -33,8 +31,9 @@ fclean: clean
 
 re: fclean all
 
-obj/%.o: src/*/%.c
+obj/%.o: src/%.c
+	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR):
-	@mkdir -p $@
+# $(OBJ_DIR):
+# 	@mkdir -p $@
