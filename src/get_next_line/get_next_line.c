@@ -119,19 +119,3 @@ char	*get_next_line(int fd)
 	buff = update_buff(buff);
 	return (result);
 }
-
-// int	main()
-// {
-// 	int	file = open("read_error.txt", O_RDONLY);
-// 	int	i = 0;
-// 	char *line;
-// 	while (i < 5)
-// 	{
-// 		printf("--");
-// 		line = get_next_line(file);
-// 		printf("%s", line);
-// 		free(line);
-// 		i++;
-// 	}
-// 	close(file);
-// }
