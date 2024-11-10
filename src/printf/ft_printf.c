@@ -69,8 +69,3 @@ int	ft_printf(const char *str, ...)
 	va_end(args);
 	return (count);
 }
-
-// int main()
-// {
-// 	ft_printf("%d", ft_printf(" %x ", 16));
-// }
